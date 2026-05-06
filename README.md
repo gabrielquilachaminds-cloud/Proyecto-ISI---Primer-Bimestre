@@ -52,7 +52,7 @@ La pantalla principal está dividida en **tres paneles**:
 
 ---
 
-## 📖 Manual de usuario
+## Manual de usuario
 
 ### 1. Registrar una venta
 
@@ -69,7 +69,7 @@ La pantalla principal está dividida en **tres paneles**:
 ### 2. Eliminar un producto del carrito
 
 - Selecciona el producto en el carrito (panel central).
-- Presiona **"🗑️ Quitar producto seleccionado"**.
+- Presiona **"Quitar producto seleccionado"**.
 
 ### 3. Cancelar una venta
 
@@ -165,7 +165,7 @@ tps-quickshop/
 
 ---
 
-## ⚙️ Componentes del Sistema de Información (SI)
+## Componentes del Sistema de Información (SI)
 
 | Componente | Detalle |
 |------------|---------|
