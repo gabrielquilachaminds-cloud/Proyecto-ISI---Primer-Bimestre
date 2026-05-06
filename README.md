@@ -1,16 +1,16 @@
-# 🛒 TPS QuickShop — Sistema de Punto de Venta
+# TPS QuickShop — Sistema de Punto de Venta
 
 Sistema de Procesamiento de Transacciones (TPS) desarrollado en Python para la gestión de ventas de un minimarket. Permite registrar ventas, controlar el stock en tiempo real y almacenar todas las transacciones en archivos CSV.
 
 ---
 
-## 📋 Descripción
+## Descripción
 
 **QuickShop TPS** es una aplicación de escritorio que simula un punto de venta real. Está desarrollada con Python 3 usando Tkinter para la interfaz gráfica y el módulo `csv` para el almacenamiento de datos. No requiere internet ni base de datos externa — funciona completamente de forma local (stand alone).
 
 ---
 
-## ✅ Requisitos
+## Requisitos
 
 - Python 3.8 o superior
 - Sistema operativo: Windows, Linux o macOS
@@ -23,7 +23,7 @@ python --version
 
 ---
 
-## 🚀 Cómo ejecutar el sistema
+## Cómo ejecutar el sistema
 
 1. Descarga o clona este repositorio:
 ```bash
@@ -40,7 +40,7 @@ python tps_minimarket.py
 
 ---
 
-## 🖥️ Interfaz del sistema
+## Interfaz del sistema
 
 La pantalla principal está dividida en **tres paneles**:
 
@@ -59,11 +59,11 @@ La pantalla principal está dividida en **tres paneles**:
 1. En el **panel izquierdo**, busca el producto por nombre o filtra por categoría.
 2. Haz clic sobre el producto para seleccionarlo.
 3. Define la cantidad en el campo "Cantidad" (por defecto es 1).
-4. Presiona **"➕ Agregar al carrito"** o haz doble clic sobre el producto.
+4. Presiona **" Agregar al carrito"** o haz doble clic sobre el producto.
 5. El producto aparece en el **panel central** con su subtotal calculado.
 6. Repite los pasos para agregar más productos.
 7. Elige el método de pago: **Efectivo, Tarjeta, Transferencia o QR**.
-8. Presiona el botón verde **"✅ COBRAR / PROCESAR VENTA"**.
+8. Presiona el botón verde **" COBRAR / PROCESAR VENTA"**.
 9. El sistema muestra el recibo con el detalle completo de la venta.
 
 ### 2. Eliminar un producto del carrito
@@ -73,7 +73,7 @@ La pantalla principal está dividida en **tres paneles**:
 
 ### 3. Cancelar una venta
 
-- Presiona **"❌ Cancelar venta"** en el panel central.
+- Presiona **" Cancelar venta"** en el panel central.
 - Confirma en la ventana de diálogo.
 - El carrito se vacía y **no se registra ninguna transacción**.
 
@@ -82,7 +82,7 @@ La pantalla principal está dividida en **tres paneles**:
 - El **panel derecho** muestra automáticamente todas las ventas del día.
 - Incluye: ID de transacción, hora, total, método de pago y cantidad de ítems.
 - Las estadísticas (total recaudado, ticket promedio) se actualizan tras cada venta.
-- Presiona **"🔄 Actualizar historial"** para refrescar manualmente.
+- Presiona **" Actualizar historial"** para refrescar manualmente.
 
 ### 5. Control de stock
 
@@ -93,7 +93,7 @@ La pantalla principal está dividida en **tres paneles**:
 
 ---
 
-## 💾 Archivos de datos generados
+## Archivos de datos generados
 
 El sistema genera y actualiza automáticamente tres archivos CSV:
 
@@ -137,21 +137,21 @@ Catálogo con stock actualizado en tiempo real.
 
 ---
 
-## 📦 Productos del catálogo
+## Productos del catálogo
 
 El sistema incluye **55 productos** distribuidos en **7 categorías**:
 
-- 🥤 **Bebidas** — Aguas, gaseosas, jugos, energizantes, leche
-- 🍟 **Snacks** — Papas, doritos, galletas, chocolates
-- 🧀 **Lácteos** — Yogur, quesos, huevos, mantequilla
-- 🍞 **Panadería** — Pan de molde, tostadas, croissants
-- 🛒 **Abarrotes** — Arroz, aceite, atún, pasta, salsas
-- 🧴 **Limpieza** — Jabón, shampoo, detergente, papel higiénico
-- 🪥 **Personal** — Desodorante, pasta dental, afeitadora
+- **Bebidas** — Aguas, gaseosas, jugos, energizantes, leche
+- **Snacks** — Papas, doritos, galletas, chocolates
+- **Lácteos** — Yogur, quesos, huevos, mantequilla
+- **Panadería** — Pan de molde, tostadas, croissants
+- **Abarrotes** — Arroz, aceite, atún, pasta, salsas
+- **Limpieza** — Jabón, shampoo, detergente, papel higiénico
+- **Personal** — Desodorante, pasta dental, afeitadora
 
 ---
 
-## 🗂️ Estructura del proyecto
+## Estructura del proyecto
 
 ```
 tps-quickshop/
@@ -178,7 +178,7 @@ tps-quickshop/
 
 ---
 
-## 📌 Materia
+## Materia
 
 Sistemas de Información  
 Desarrollado con Python 3 — sin dependencias externas
