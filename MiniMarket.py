@@ -3,18 +3,21 @@
   TPS - SISTEMA DE PUNTO DE VENTA
   MiniMarket "QuickShop"
   Materia: Sistemas de Información
-  Versión 2.0 — Con gestión de stock en tiempo real
+  Este código se hizo con el propóstio de crear un sistema de
+  punto de venta para un minimarket, en donde se ve el 
+  historial de compras y el stock disponible, el lenguaje de
+  programación que se ocupo es python.
 =============================================================
 """
 
-import tkinter as tk
-from tkinter import ttk, messagebox
-import csv
-import os
-from datetime import datetime
+import tkinter as tk   #Importaciones para crear la interfaz gráfica
+from tkinter import ttk, messagebox   #Importaciones para crear la interfaz gráfica
+import csv #Escribe los archivos csv que se generan
+import os  #Verifica si un archivo existe en la computadora
+from datetime import datetime #Obtiene la fecha y hora actual
 
 ARCHIVO_TRANSACCIONES = "transacciones.csv"
-ARCHIVO_DETALLES      = "detalles_venta.csv"
+ARCHIVO_DETALLES      = "detalles_venta.csv"   #Archivos creados del csv
 ARCHIVO_INVENTARIO    = "inventario.csv"
 
 BG_OSCURO  = "#0d1117"
@@ -23,7 +26,7 @@ BG_CARD    = "#1e2536"
 AZUL       = "#4f8ef7"
 AZUL_OSC   = "#3a6ed8"
 VERDE      = "#22c55e"
-VERDE_OSC  = "#16a34a"
+VERDE_OSC  = "#16a34a"            #Constantes que se definen para ocuparlas después, son colores
 ROJO       = "#ef4444"
 AMARILLO   = "#f59e0b"
 BLANCO     = "#e2e8f0"
@@ -45,8 +48,8 @@ CATALOGO_BASE = [
     {"codigo":"B008","nombre":"Jugo de mango 500ml",       "precio":1.10, "stock":55, "categoria":"Bebidas"},
     {"codigo":"B009","nombre":"Energizante Monster 473ml", "precio":2.50, "stock":40, "categoria":"Bebidas"},
     {"codigo":"B010","nombre":"Gatorade 600ml",            "precio":1.30, "stock":65, "categoria":"Bebidas"},
-    {"codigo":"B011","nombre":"Te helado limon 500ml",     "precio":1.00, "stock":75, "categoria":"Bebidas"},
-    {"codigo":"B012","nombre":"Leche entera 1L",           "precio":0.95, "stock":80, "categoria":"Bebidas"},
+    {"codigo":"B011","nombre":"Te helado limon 500ml",     "precio":1.00, "stock":75, "categoria":"Bebidas"},     #Diccionarios, cada uno representa un producto
+    {"codigo":"B012","nombre":"Leche entera 1L",           "precio":0.95, "stock":80, "categoria":"Bebidas"},     #código, nombre, precio,cantidad en stock y categoría
     {"codigo":"B013","nombre":"Leche deslactosada 1L",     "precio":1.20, "stock":50, "categoria":"Bebidas"},
     {"codigo":"S001","nombre":"Papas Lays 90g",            "precio":1.10, "stock":90, "categoria":"Snacks"},
     {"codigo":"S002","nombre":"Papas Ruffles 90g",         "precio":1.10, "stock":85, "categoria":"Snacks"},
@@ -95,9 +98,11 @@ CATALOGO_BASE = [
 
 inventario = {}
 
+#Cuando arranca el programa, verifica si ya existe un archivo de inventario guardado. Si existe, lo carga
+#Sino usa el catálogo base
 def inicializar_inventario():
     global inventario
-    if os.path.exists(ARCHIVO_INVENTARIO):
+    if os.path.exists(ARCHIVO_INVENTARIO):  #Lee el CSV y carga los productos en memoria
         with open(ARCHIVO_INVENTARIO, "r", encoding="utf-8") as f:
             for row in csv.DictReader(f):
                 inventario[row["codigo"]] = {
@@ -106,17 +111,17 @@ def inicializar_inventario():
                     "categoria": row["categoria"],
                 }
     else:
-        for p in CATALOGO_BASE:
+        for p in CATALOGO_BASE:               #Copia el catálogo base y crea el CSV
             inventario[p["codigo"]] = dict(p)
         guardar_inventario_csv()
-
+#Escribe el inventario actual al archivo .CSV. Se lo llama cada vez que cambia el stock
 def guardar_inventario_csv():
     with open(ARCHIVO_INVENTARIO, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["codigo","nombre","precio","stock","categoria"])
         for p in inventario.values():
             w.writerow([p["codigo"],p["nombre"],p["precio"],p["stock"],p["categoria"]])
-
+#Después de una venta, resta del inventario, la cantidad que ya a sido vendida
 def descontar_stock(carrito):
     for item in carrito:
         inventario[item["codigo"]]["stock"] -= item["cantidad"]
@@ -132,6 +137,7 @@ def inicializar_csv_ventas():
             csv.writer(f).writerow(["id_transaccion","codigo_producto","nombre_producto",
                                     "precio_unitario","cantidad","subtotal_linea"])
 
+#Calcula subtotal, IVA de 12% y total, luego lo guarda en los archivos CSV.
 def guardar_transaccion(id_tx, cajero, carrito, metodo):
     ahora    = datetime.now()
     subtotal = sum(i["precio"] * i["cantidad"] for i in carrito)
@@ -147,19 +153,21 @@ def guardar_transaccion(id_tx, cajero, carrito, metodo):
                         i["precio"], i["cantidad"], round(i["precio"]*i["cantidad"],2)])
     return subtotal, iva, total
 
+#Lee el historial de ventas desde el CSV y lo devuelve como lista.
 def cargar_transacciones():
     if not os.path.exists(ARCHIVO_TRANSACCIONES):
         return []
     with open(ARCHIVO_TRANSACCIONES, "r", encoding="utf-8") as f:
         return list(csv.DictReader(f))
-
+#Genera el código de la próxima venta automáticamente: TX-0001, TX-0002, etc.
 def siguiente_id():
     txs = cargar_transacciones()
     if not txs:
         return "TX-0001"
     return f"TX-{int(txs[-1]['id_transaccion'].split('-')[1])+1:04d}"
 
-
+# En esta clase se agrupa toda la lógica de la interfaz, el método __int__ se ejecuta al arrancar
+# y es el que configura el tamaño de venta, colores, paneles, datos inciales
 class TPSApp:
     def __init__(self, root):
         self.root = root
@@ -192,7 +200,7 @@ class TPSApp:
         s.configure("TCombobox", fieldbackground=BG_CARD, background=BG_CARD,
                     foreground=BLANCO, font=F_CHICA)
 
-    def _header(self):
+    def _header(self):             #Crea la barra superior con nombre y el reloj
         bar = tk.Frame(self.root, bg=BG_PANEL, height=56)
         bar.pack(fill="x")
         bar.pack_propagate(False)
@@ -206,7 +214,7 @@ class TPSApp:
                  bg=BG_PANEL, fg=AMARILLO).pack(side="right", padx=12)
         self._tick()
 
-    def _tick(self):
+    def _tick(self):                #Actualiza el reloj cada un segundo
         self.lbl_hora.config(text="🕐 " + datetime.now().strftime("%d/%m/%Y  %H:%M:%S"))
         self.root.after(1000, self._tick)
 
@@ -222,7 +230,7 @@ class TPSApp:
         self._panel_historial(main)
 
     # ── PANEL CATÁLOGO ────────────────────
-    def _panel_catalogo(self, parent):
+    def _panel_catalogo(self, parent):  #Contruye la tabla de productos con búsqueda y filtro 
         f = tk.Frame(parent, bg=BG_PANEL)
         f.grid(row=0, column=0, padx=(0,5), pady=2, sticky="nsew")
 
@@ -278,7 +286,7 @@ class TPSApp:
             tk.Label(ley, text=txt, font=("Consolas",8), bg=BG_PANEL, fg=color).pack(side="left", padx=6)
 
     # ── PANEL VENTA ───────────────────────
-    def _panel_venta(self, parent):
+    def _panel_venta(self, parent):        #Contruye el carrito, totales y botón de cobrar
         f = tk.Frame(parent, bg=BG_PANEL)
         f.grid(row=0, column=1, padx=5, pady=2, sticky="nsew")
 
@@ -346,7 +354,7 @@ class TPSApp:
                   cursor="hand2", command=self._cancelar).pack(fill="x")
 
     # ── PANEL HISTORIAL ───────────────────
-    def _panel_historial(self, parent):
+    def _panel_historial(self, parent):   #Muestra vental del día y stock crítico
         f = tk.Frame(parent, bg=BG_PANEL)
         f.grid(row=0, column=2, padx=(5,0), pady=2, sticky="nsew")
 
@@ -407,7 +415,7 @@ class TPSApp:
         self._actualizar_criticos()
 
     # ── LÓGICA ────────────────────────────
-    def _cargar_catalogo(self):
+    def _cargar_catalogo(self):            #Filtra y muestra productos, según su busqueda
         busq = self.var_busq.get().lower()
         cat  = self.var_cat.get()
         for row in self.tv_cat.get_children():
@@ -423,7 +431,7 @@ class TPSApp:
                 p["codigo"], p["nombre"], f"${p['precio']:.2f}",
                 "AGOTADO" if stock == 0 else stock, p["categoria"]))
 
-    def _agregar(self):
+    def _agregar(self):   #Agrega un producto al carrito
         sel = self.tv_cat.selection()
         if not sel:
             messagebox.showwarning("Aviso", "Selecciona un producto del catalogo.")
@@ -453,14 +461,14 @@ class TPSApp:
                               "precio":p["precio"],"cantidad":cantidad})
         self._refresh_carrito()
 
-    def _quitar(self):
+    def _quitar(self):          #Elimina un producto del carrito
         sel = self.tv_cart.selection()
         if not sel:
             return
         self.carrito.pop(self.tv_cart.index(sel[0]))
         self._refresh_carrito()
 
-    def _refresh_carrito(self):
+    def _refresh_carrito(self):   #Recalcula subtotal, IVA y total en pantalla
         for row in self.tv_cart.get_children():
             self.tv_cart.delete(row)
         subtotal = 0.0
@@ -477,7 +485,7 @@ class TPSApp:
         self.var_total.set(f"${total:.2f}")
         self.var_items.set(f"{n} item{'s' if n!=1 else ''}")
 
-    def _procesar(self):
+    def _procesar(self):   #Cobra la venta, descuenta stock, guarda en CSV
         if not self.carrito:
             messagebox.showwarning("Carrito vacio", "Agrega productos antes de cobrar.")
             return
@@ -516,14 +524,14 @@ class TPSApp:
         self._cargar_historial()
         self._actualizar_criticos()
 
-    def _cancelar(self):
+    def _cancelar(self):    #Vacía el carrito sin guardar nada, en el caso que el cliente ya no quiera nada
         if not self.carrito:
             return
         if messagebox.askyesno("Cancelar venta", "Cancelar la venta actual?"):
             self.carrito = []
             self._refresh_carrito()
 
-    def _cargar_historial(self):
+    def _cargar_historial(self):  #Actualiza la tabla de ventas del día
         for row in self.tv_hist.get_children():
             self.tv_hist.delete(row)
         txs   = cargar_transacciones()
@@ -548,7 +556,7 @@ class TPSApp:
         self.var_tdia.set(f"${total_dia:.2f}")
         self.var_prom.set(f"${(total_dia/count):.2f}" if count else "$0.00")
 
-    def _actualizar_criticos(self):
+    def _actualizar_criticos(self):       #Este muestra productos con stock menor a 10, para que se pueda rellenar con más productos
         for row in self.tv_crit.get_children():
             self.tv_crit.delete(row)
         criticos = sorted([p for p in inventario.values() if p["stock"] < 10],
@@ -559,8 +567,9 @@ class TPSApp:
                 p["codigo"], p["nombre"][:20],
                 "AGOTADO" if p["stock"] == 0 else p["stock"]))
 
-
 if __name__ == "__main__":
-    root = tk.Tk()
-    TPSApp(root)
-    root.mainloop()
+    root = tk.Tk()   #Crea la ventan principal
+    TPSApp(root)     #Lanza la aplicación 
+    root.mainloop()  #Mantiene la ventana abierta, cabe mencioanrq eu este es como un bucle
+                     #Mantiene la ventana abierta, esperando a que el usuario haga clic en algo.
+
