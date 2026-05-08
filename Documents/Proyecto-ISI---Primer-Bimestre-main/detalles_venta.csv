@@ -1,0 +1,8 @@
+id_transaccion,codigo_producto,nombre_producto,precio_unitario,cantidad,subtotal_linea
+TX-0001,A001,Arroz 1kg,0.9,6,5.4
+TX-0001,A002,Arroz 5kg,4.2,1,4.2
+TX-0002,B001,Agua mineral 500ml,0.5,1,0.5
+TX-0002,B002,Agua con gas 500ml,0.65,1,0.65
+TX-0002,B003,Coca-Cola 600ml,1.25,1,1.25
+TX-0002,B004,Coca-Cola 1.5L,1.8,1,1.8
+TX-0002,B006,Fanta naranja 600ml,1.2,1,1.2
