@@ -172,7 +172,8 @@ class TPSApp:
     def __init__(self, root):
         self.root = root
         self.root.title("TPS — Punto de Venta | QuickShop")
-        self.root.geometry("1300x760")
+        self.root.geometry("1600x900")
+        self.root.minsize(1400,800)
         self.root.configure(bg=BG_OSCURO)
         self.root.resizable(True, True)
 
@@ -380,14 +381,14 @@ class TPSApp:
         cols3 = ("id","hora","total","metodo","items")
         self.tv_hist = ttk.Treeview(f, columns=cols3, show="headings", height=14)
         for col, txt, w, anch in [
-            ("id","ID",72,"center"), ("hora","Hora",60,"center"),
-            ("total","Total",65,"center"), ("metodo","Pago",80,"center"),
-            ("items","Items",45,"center")]:
+            ("id","ID",90,"center"), ("hora","Hora",90,"center"),
+            ("total","Total",90,"center"), ("metodo","Pago",120,"center"),
+            ("items","Items",60,"center")]:
             self.tv_hist.heading(col, text=txt)
             self.tv_hist.column(col, width=w, anchor=anch)
         sb3 = ttk.Scrollbar(f, orient="vertical", command=self.tv_hist.yview)
         self.tv_hist.configure(yscrollcommand=sb3.set)
-        self.tv_hist.pack(side="left", fill="both", expand=True, padx=(10,0), pady=4)
+        self.tv_hist.pack(fill="both", expand=True, padx=(10,0), pady=4)
         sb3.pack(side="left", fill="y", pady=4, padx=(0,6))
 
         btns = tk.Frame(f, bg=BG_PANEL)
