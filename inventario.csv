@@ -1,57 +1,201 @@
-codigo,nombre,precio,stock,categoria
-B001,Agua mineral 500ml,0.5,149,Bebidas
-B002,Agua con gas 500ml,0.65,79,Bebidas
-B003,Coca-Cola 600ml,1.25,99,Bebidas
-B004,Coca-Cola 1.5L,1.8,69,Bebidas
-B005,Sprite 600ml,1.2,90,Bebidas
-B006,Fanta naranja 600ml,1.2,84,Bebidas
-B007,Jugo del Valle naranja 1L,1.5,60,Bebidas
-B008,Jugo de mango 500ml,1.1,55,Bebidas
-B009,Energizante Monster 473ml,2.5,40,Bebidas
-B010,Gatorade 600ml,1.3,65,Bebidas
-B011,Te helado limon 500ml,1.0,75,Bebidas
-B012,Leche entera 1L,0.95,80,Bebidas
-B013,Leche deslactosada 1L,1.2,50,Bebidas
-S001,Papas Lays 90g,1.1,90,Snacks
-S002,Papas Ruffles 90g,1.1,85,Snacks
-S003,Doritos 90g,1.2,95,Snacks
-S004,Cheetos 80g,1.0,70,Snacks
-S005,Galletas Oreo 120g,1.5,60,Snacks
-S006,Galletas de vainilla 100g,0.9,65,Snacks
-S007,Chifles 80g,0.75,80,Snacks
-S008,Mani con chocolate 50g,0.8,70,Snacks
-S009,Barra de cereal 35g,0.6,90,Snacks
-S010,Chocolatin 40g,0.7,100,Snacks
-L001,Yogur natural 200g,0.75,50,Lacteos
-L002,Yogur fresa 200g,0.8,45,Lacteos
-L003,Queso fresco 250g,1.8,35,Lacteos
-L004,Queso mozzarella 200g,2.2,30,Lacteos
-L005,Mantequilla 100g,1.5,40,Lacteos
-L006,Huevos x12,2.5,50,Lacteos
-L007,Crema de leche 250ml,1.2,35,Lacteos
-P001,Pan de molde integral,1.8,40,Panaderia
-P002,Pan de molde blanco,1.5,45,Panaderia
-P003,Tostadas x20,1.3,35,Panaderia
-P004,Croissant x4,2.0,25,Panaderia
-A001,Arroz 1kg,0.9,94,Abarrotes
-A002,Arroz 5kg,4.2,39,Abarrotes
-A003,Aceite vegetal 1L,2.2,60,Abarrotes
-A004,Azucar blanca 1kg,0.75,90,Abarrotes
-A005,Sal 500g,0.35,80,Abarrotes
-A006,Atun en lata 180g,1.4,70,Abarrotes
-A007,Sardinas en lata 125g,1.1,65,Abarrotes
-A008,Pasta espagueti 500g,0.85,75,Abarrotes
-A009,Salsa de tomate 500g,1.3,55,Abarrotes
-A010,Mayonesa 200g,1.0,60,Abarrotes
-C001,Jabon de manos 250ml,1.2,60,Limpieza
-C002,Shampoo 400ml,3.5,35,Limpieza
-C003,Papel higienico x4,1.8,55,Limpieza
-C004,Papel higienico x12,4.8,30,Limpieza
-C005,Detergente en polvo 500g,1.6,45,Limpieza
-C006,Suavizante ropa 500ml,2.0,40,Limpieza
-C007,Lavavajillas 500ml,1.5,50,Limpieza
-G001,Desodorante 150ml,2.8,40,Personal
-G002,Pasta dental 100ml,1.5,55,Personal
-G003,Cepillo dental,1.2,60,Personal
-G004,Afeitadora x2,2.5,30,Personal
-G005,Algodon 100g,1.0,45,Personal
+codigo,stock
+B001,150
+B002,80
+B003,100
+B004,99
+B005,69
+B006,90
+B007,85
+B008,60
+B009,55
+B010,40
+B011,40
+B012,65
+B013,75
+B014,80
+B015,50
+B016,60
+B017,30
+B018,65
+B019,60
+B020,50
+B021,75
+B022,80
+B023,60
+B024,50
+B025,40
+B026,45
+B027,35
+B028,50
+B029,60
+B030,55
+S001,90
+S002,85
+S003,40
+S004,95
+S005,70
+S006,80
+S007,60
+S008,70
+S009,60
+S010,65
+S011,55
+S012,65
+S013,70
+S014,80
+S015,90
+S016,100
+S017,50
+S018,45
+S019,40
+S020,60
+S021,75
+S022,80
+S023,100
+S024,70
+S025,35
+L001,50
+L002,45
+L003,45
+L004,40
+L005,30
+L006,35
+L007,30
+L008,25
+L009,35
+L010,40
+L011,45
+L012,60
+L013,50
+L014,20
+L015,35
+L016,30
+L017,25
+L018,25
+L019,20
+L020,20
+P001,40
+P002,45
+P003,35
+P004,30
+P005,25
+P006,25
+P007,20
+P008,30
+P009,25
+P010,20
+P011,35
+P012,35
+P013,30
+P014,40
+P015,50
+A001,100
+A002,60
+A003,39
+A004,59
+A005,44
+A006,50
+A007,90
+A008,69
+A009,80
+A010,80
+A011,70
+A012,65
+A013,55
+A014,60
+A015,65
+A016,75
+A017,70
+A018,65
+A019,55
+A020,60
+A021,40
+A022,55
+A023,50
+A024,70
+A025,80
+A026,75
+A027,65
+A028,70
+A029,60
+A030,50
+A031,55
+A032,50
+A033,30
+A034,40
+A035,40
+C001,60
+C002,50
+C003,70
+C004,35
+C005,30
+C006,30
+C007,55
+C008,30
+C009,15
+C010,40
+C011,60
+C012,45
+C013,30
+C014,35
+C015,40
+C016,50
+C017,25
+C018,45
+C019,35
+C020,40
+C021,60
+C022,30
+C023,30
+C024,40
+C025,25
+G001,40
+G002,35
+G003,55
+G004,50
+G005,60
+G006,60
+G007,35
+G008,50
+G009,30
+G010,30
+G011,45
+G012,40
+G013,45
+G014,50
+G015,20
+G016,30
+G017,40
+G018,50
+G019,40
+G020,25
+G021,35
+G022,60
+G023,70
+G024,55
+G025,35
+FV01,100
+FV02,80
+FV03,90
+FV04,70
+FV05,60
+FV06,80
+FV07,100
+FV08,50
+FV09,40
+FV10,90
+FV11,70
+FV12,60
+FV13,50
+FV14,45
+FV15,60
+CM01,50
+CM02,45
+CM03,40
+CM04,35
+CM05,30
+CM06,25
+CM07,40
+CM08,35
+CM09,30
+CM10,20
