@@ -3,15 +3,6 @@
   TPS QuickShop v3.0 — Sistema de Punto de Venta
   MiniMarket QuickShop | Materia: Sistemas de Información
   Python 3 + Tkinter + CSV
-
-  Características:
-    - 200 productos en 9 categorías.
-    - Catálogo (productos.csv) separado del inventario (inventario.csv).
-    - 100 clientes pre‑registrados + CRUD de clientes.
-    - Facturas con datos del cliente y vigencia de 1 año.
-    - Historial de un año de transacciones (generado automáticamente).
-    - Reportes: promedio por N facturas, top productos, ventas por método.
-    - Selección de cliente al momento de cobrar (buscar / registrar / consumidor final).
 =============================================================
 """
 
