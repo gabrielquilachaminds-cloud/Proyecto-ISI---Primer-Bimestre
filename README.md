@@ -27,13 +27,13 @@ python --version
 
 1. Descarga o clona este repositorio:
 ```bash
-git clone https://github.com/[tu-usuario]/tps-quickshop.git
-cd tps-quickshop
+git clone https://github.com/gabrielquilachaminds-cloud/Proyecto-ISI---Primer-Bimestre.git
+cd Proyecto-ISI---Primer-Bimestre
 ```
 
 2. Ejecuta el programa:
 ```bash
-python tps_minimarket.py
+python MiniMarket.py
 ```
 
 3. Al iniciarse por primera vez, el sistema crea automáticamente los archivos `inventario.csv`, `transacciones.csv` y `detalles_venta.csv` en la misma carpeta.
