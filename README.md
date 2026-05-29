@@ -154,13 +154,22 @@ El sistema incluye **55 productos** distribuidos en **7 categorías**:
 ## Estructura del proyecto
 
 ```
-tps-quickshop/
+MIS_QuickShop/
 │
-├── tps_minimarket.py       # Programa principal
-├── inventario.csv          # Catálogo y stock (generado automáticamente)
-├── transacciones.csv       # Registro de ventas (generado automáticamente)
-├── detalles_venta.csv      # Detalle de productos por venta (generado automáticamente)
-└── README.md               # Este archivo
+├── .ipynb_checkpoints/
+│   ├── MIS_QuickShop-checkpoint     # Respaldo automático de Jupyter
+│   └── Untitled-checkpoint.ipynb    # Respaldo automático del notebook
+│
+├── MIS_QuickShop                    # Archivo principal del proyecto
+├── MiniMarket.py                    # Programa principal del sistema
+├── README.md                        # Documentación del proyecto
+├── Untitled.ipynb                   # Notebook de pruebas o desarrollo
+├── dashboard_mis_quickshop.png      # Imagen del dashboard del sistema
+├── detalles_venta.csv               # Registro detallado de ventas
+├── inventario.csv                   # Control de inventario y stock
+├── productos.csv                    # Base de datos de productos
+├── transacciones.csv                # Historial de transacciones
+└── usuarios.csv                     # Información de usuarios
 ```
 
 ---
